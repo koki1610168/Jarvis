@@ -85,5 +85,16 @@ if __name__ == "__main__":
             map_search.send_keys(query)
             driver.find_element_by_xpath('//*[@id="searchbox-searchbutton"]').click()
 
+        elif 'open my repository' in query:
+            speak("Type your email")
+            EMAIL = str(input("Type your Email Address: "))
+            speak("Type your password")
+            PASSWORD = str(input("Type your password: "))
+            driver = webdriver.Chrome('/Users/hachimannoboruju/Documents/Python/Project/Selenium/chromedriver')
+            driver.get('https://github.com/login')
+            driver.find_element_by_xpath('//*[@id="login_field"]').send_keys(EMAIL)
+            driver.find_element_by_xpath('//*[@id="password"]').send_keys(PASSWORD)
+            driver.find_element_by_xpath('/html/body/div[3]/main/div/form/div[4]/input[9]').click()
+
         time.sleep(5)
 
