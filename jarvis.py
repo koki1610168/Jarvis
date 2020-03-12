@@ -46,6 +46,18 @@ def takeCommand():
 if __name__ == "__main__":
 
     wishMe()
+    info = """***************************************
+    command:
+        * What is ____? (Wikipedia)
+        * Search ____?  (Google)
+        * Open Udemy
+        * Open Amazon
+        * Show map of ____?
+        * Open my repository (Github)
+***************************************"""
+
+    print(info)
+    time.sleep(5)
     ask = True
     while ask:
         query = takeCommand().lower()
@@ -95,6 +107,19 @@ if __name__ == "__main__":
             driver.find_element_by_xpath('//*[@id="login_field"]').send_keys(EMAIL)
             driver.find_element_by_xpath('//*[@id="password"]').send_keys(PASSWORD)
             driver.find_element_by_xpath('/html/body/div[3]/main/div/form/div[4]/input[9]').click()
+
+        elif 'open khan academy' in query:
+            speak("Studying will enrich your life")
+            speak("Type your Username: ")
+            USERNAME = str(input("Type your Username: "))
+            speak("Type your Password")
+            KPASSWORD = str(input("Type your Password: "))
+            driver = webdriver.Chrome('/Users/hachimannoboruju/Documents/Python/Project/Selenium/chromedriver')
+            driver.get("https://www.khanacademy.org/login?continue=%2F")
+            driver.find_element_by_xpath('//*[@id="uid-identity-text-field-0-email-or-username"]').send_keys(USERNAME)
+            driver.find_element_by_xpath('//*[@id="uid-identity-text-field-1-password"]').send_keys(KPASSWORD)
+            driver.find_element_by_xpath('//*[@id="login-signup-root"]/div/div[3]/section[2]/div/div/div[2]/button').click()
+
 
         time.sleep(5)
 
